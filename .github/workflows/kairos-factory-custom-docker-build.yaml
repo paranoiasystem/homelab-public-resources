@@ -56,7 +56,7 @@ jobs:
       registry_namespace: "paranoiasystem"
       registry_repository: "homelab/kairos"
       dockerfile_path: "custom/Dockerfile"
-      iso: true
+      raw: true
       summary_artifacts: true
       release: true
 
