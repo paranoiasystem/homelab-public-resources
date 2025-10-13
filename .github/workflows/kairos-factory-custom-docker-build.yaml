@@ -7,7 +7,7 @@ on:
       - 'v*' 
 
 permissions:
-  actions: read
+  actions: write
   contents: write
   security-events: write
   id-token: write
@@ -31,6 +31,23 @@ jobs:
     with:
       version: "auto"
       model: "generic"
+      arch: "arm64"
+      base_image: "ubuntu:24.04"
+      kubernetes_distro: "k0s"
+      kubernetes_version: "v1.32.8+k0s.0"
+      registry_domain: "ghcr.io"
+      registry_namespace: "paranoiasystem"
+      registry_repository: "homelab/kairos"
+      dockerfile_path: "custom/Dockerfile"
+
+  build-arm64-rpi4:
+    uses: kairos-io/kairos-factory-action/.github/workflows/reusable-factory.yaml@main
+    secrets:
+      registry_username: ${{ secrets.REGISTRY_USERNAME }}
+      registry_password: ${{ secrets.REGISTRY_PASSWORD }}
+    with:
+      version: "auto"
+      model: "rpi4"
       arch: "arm64"
       base_image: "ubuntu:24.04"
       kubernetes_distro: "k0s"
