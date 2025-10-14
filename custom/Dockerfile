@@ -10,7 +10,7 @@ ARG KUBERNETES_DISTRO
 ARG KUBERNETES_VERSION
 ARG VERSION
 
-LABEL org.opencontainers.image.source https://github.com/paranoiasystem/homelab-public-resources
+LABEL org.opencontainers.image.source="https://github.com/paranoiasystem/homelab-public-resources"
 
 RUN apt-get update && apt-get upgrade -y
 
