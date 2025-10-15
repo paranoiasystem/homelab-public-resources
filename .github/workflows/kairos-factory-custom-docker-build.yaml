@@ -39,6 +39,8 @@ jobs:
       registry_namespace: "paranoiasystem"
       registry_repository: "homelab/kairos"
       dockerfile_path: "custom/Dockerfile"
+      raw: true
+      summary_artifacts: true
 
   build-arm64-rpi4:
     uses: kairos-io/kairos-factory-action/.github/workflows/reusable-factory.yaml@main
@@ -56,6 +58,8 @@ jobs:
       registry_namespace: "paranoiasystem"
       registry_repository: "homelab/kairos"
       dockerfile_path: "custom/Dockerfile"
+      raw: true
+      summary_artifacts: true
 
   build-amd64:
     uses: kairos-io/kairos-factory-action/.github/workflows/reusable-factory.yaml@main
@@ -74,5 +78,5 @@ jobs:
       registry_repository: "homelab/kairos"
       dockerfile_path: "custom/Dockerfile"
       iso: true
+      raw: true
       summary_artifacts: true
-      release: true
