@@ -23,49 +23,35 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
-  build-arm64:
-    uses: kairos-io/kairos-factory-action/.github/workflows/reusable-factory.yaml@main
-    secrets:
-      registry_username: ${{ secrets.REGISTRY_USERNAME }}
-      registry_password: ${{ secrets.REGISTRY_PASSWORD }}
-    with:
-      version: "auto"
-      model: "generic"
-      arch: "arm64"
-      base_image: "ubuntu:24.04"
-      kubernetes_distro: "k0s"
-      kubernetes_version: "v1.32.8+k0s.0"
-      registry_domain: "ghcr.io"
-      registry_namespace: "paranoiasystem"
-      registry_repository: "homelab/kairos"
-      dockerfile_path: "custom/Dockerfile"
-      raw: true
-      summary_artifacts: true
+  # build-arm64:
+  #   uses: kairos-io/kairos-factory-action/.github/workflows/reusable-factory.yaml@main
+  #   secrets:
+  #     registry_username: ${{ secrets.REGISTRY_USERNAME }}
+  #     registry_password: ${{ secrets.REGISTRY_PASSWORD }}
+  #   with:
+  #     version: "auto"
+  #     model: "generic"
+  #     arch: "arm64"
+  #     base_image: "ubuntu:24.04"
+  #     kubernetes_distro: "k0s"
+  #     kubernetes_version: "v1.32.8+k0s.0"
+  #     registry_domain: "ghcr.io"
+  #     registry_namespace: "paranoiasystem"
+  #     registry_repository: "homelab/kairos"
+  #     dockerfile_path: "custom/Dockerfile"
+  #     raw: true
+  #     summary_artifacts: true
 
   build-arm64-rpi4:
     uses: kairos-io/kairos-factory-action/.github/workflows/reusable-factory.yaml@v0.0.9
     secrets:
       registry_username: ${{ secrets.REGISTRY_USERNAME }}
       registry_password: ${{ secrets.REGISTRY_PASSWORD }}
-    permissions:
-      actions: write
-      contents: write
-      security-events: write
-      id-token: write
-    # strategy:
-    #   fail-fast: false
-    #   matrix:
-    #     base_image:
-    #       - ubuntu:22.04
-    #       - ubuntu:20.04
-    #       - opensuse/leap:15.6
-    #       - debian:bookworm
     with:
       version: "auto"
       model: "rpi4"
       arch: "arm64"
       base_image: debian:12
-      # base_image: ${{ matrix.base_image }}
       kubernetes_distro: "k0s"
       kubernetes_version: "v1.32.8+k0s.0"
       registry_domain: "ghcr.io"
@@ -75,22 +61,22 @@ jobs:
       raw: true
       summary_artifacts: true
 
-  build-amd64:
-    uses: kairos-io/kairos-factory-action/.github/workflows/reusable-factory.yaml@main
-    secrets:
-      registry_username: ${{ secrets.REGISTRY_USERNAME }}
-      registry_password: ${{ secrets.REGISTRY_PASSWORD }}
-    with:
-      version: "auto"
-      model: "generic"
-      arch: "amd64"
-      base_image: "ubuntu:24.04"
-      kubernetes_distro: "k0s"
-      kubernetes_version: "v1.32.8+k0s.0"
-      registry_domain: "ghcr.io"
-      registry_namespace: "paranoiasystem"
-      registry_repository: "homelab/kairos"
-      dockerfile_path: "custom/Dockerfile"
-      iso: true
-      raw: true
-      summary_artifacts: true
+  # build-amd64:
+  #   uses: kairos-io/kairos-factory-action/.github/workflows/reusable-factory.yaml@main
+  #   secrets:
+  #     registry_username: ${{ secrets.REGISTRY_USERNAME }}
+  #     registry_password: ${{ secrets.REGISTRY_PASSWORD }}
+  #   with:
+  #     version: "auto"
+  #     model: "generic"
+  #     arch: "amd64"
+  #     base_image: "ubuntu:24.04"
+  #     kubernetes_distro: "k0s"
+  #     kubernetes_version: "v1.32.8+k0s.0"
+  #     registry_domain: "ghcr.io"
+  #     registry_namespace: "paranoiasystem"
+  #     registry_repository: "homelab/kairos"
+  #     dockerfile_path: "custom/Dockerfile"
+  #     iso: true
+  #     raw: true
+  #     summary_artifacts: true
