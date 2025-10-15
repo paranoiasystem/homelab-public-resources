@@ -43,15 +43,23 @@ jobs:
       summary_artifacts: true
 
   build-arm64-rpi4:
-    uses: kairos-io/kairos-factory-action/.github/workflows/reusable-factory.yaml@main
+    uses: kairos-io/kairos-factory-action/.github/workflows/reusable-factory.yaml@v0.0.9
     secrets:
       registry_username: ${{ secrets.REGISTRY_USERNAME }}
       registry_password: ${{ secrets.REGISTRY_PASSWORD }}
+    strategy:
+      fail-fast: false
+      matrix:
+        base_image:
+          - ubuntu:22.04
+          - ubuntu:20.04
+          - opensuse/leap:15.6
+          - debian:bookworm
     with:
       version: "auto"
       model: "rpi4"
       arch: "arm64"
-      base_image: "ubuntu:24.04"
+      base_image: ${{ matrix.base_image }}
       kubernetes_distro: "k0s"
       kubernetes_version: "v1.32.8+k0s.0"
       registry_domain: "ghcr.io"
