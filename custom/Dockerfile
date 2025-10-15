@@ -23,12 +23,10 @@ RUN apt-get install -y nfs-common
 # Install iSCSI tools
 RUN apt-get install -y open-iscsi lsscsi sg3-utils multipath-tools scsitools
 COPY custom/multipath.conf /etc/multipath.conf
-RUN systemctl enable multipath-tools.service
-RUN service multipath-tools restart || true
-RUN systemctl status multipath-tools || true
-RUN systemctl enable open-iscsi.service
-RUN service open-iscsi start || true
-RUN systemctl status open-iscsi || true
+
+RUN ln -s /lib/systemd/system/multipath-tools.service /etc/systemd/system/multi-user.target.wants/multipath-tools.service || true
+
+RUN ln -s /lib/systemd/system/open-iscsi.service /etc/systemd/system/multi-user.target.wants/open-iscsi.service || true
 
 RUN --mount=type=bind,from=kairos-init,src=/kairos-init,dst=/kairos-init \
     if [ -n "${KUBERNETES_DISTRO}" ]; then \
