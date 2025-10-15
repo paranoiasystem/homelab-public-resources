@@ -47,19 +47,20 @@ jobs:
     secrets:
       registry_username: ${{ secrets.REGISTRY_USERNAME }}
       registry_password: ${{ secrets.REGISTRY_PASSWORD }}
-    strategy:
-      fail-fast: false
-      matrix:
-        base_image:
-          - ubuntu:22.04
-          - ubuntu:20.04
-          - opensuse/leap:15.6
-          - debian:bookworm
+    # strategy:
+    #   fail-fast: false
+    #   matrix:
+    #     base_image:
+    #       - ubuntu:22.04
+    #       - ubuntu:20.04
+    #       - opensuse/leap:15.6
+    #       - debian:bookworm
     with:
       version: "auto"
       model: "rpi4"
       arch: "arm64"
-      base_image: ${{ matrix.base_image }}
+      base_image: debian:12
+      # base_image: ${{ matrix.base_image }}
       kubernetes_distro: "k0s"
       kubernetes_version: "v1.32.8+k0s.0"
       registry_domain: "ghcr.io"
