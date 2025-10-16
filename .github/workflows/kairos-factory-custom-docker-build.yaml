@@ -51,7 +51,7 @@ jobs:
       version: "auto"
       model: "rpi4"
       arch: "arm64"
-      base_image: debian:12
+      base_image: ubuntu:22.04
       kubernetes_distro: "k0s"
       kubernetes_version: "v1.32.8+k0s.0"
       registry_domain: "ghcr.io"
